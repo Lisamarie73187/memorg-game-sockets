@@ -4,6 +4,7 @@ import SignIn from "./components/SignIn";
 import Game from './components/Game';
 import io from "socket.io-client/build/index";
 import Lobby from "./components/Lobby";
+require('dotenv').config();
 
 const screenStrings = {
     lobby: 'lobby',
@@ -12,14 +13,17 @@ const screenStrings = {
 };
 
 const PORT = process.env.PORT || 5000;
+console.log(PORT)
 
 
-const socket = io.connect(`http://localhost:${PORT}` , {
-    withCredentials: true,
-    extraHeaders: {
-        "my-custom-header": "abcd"
-    }
-});
+// const socket = io.connect(`http://localhost:${PORT}` , {
+//     withCredentials: true,
+//     extraHeaders: {
+//         "my-custom-header": "abcd"
+//     }
+// });
+
+const socket = io.connect();
 
 
 function App() {
