@@ -38,7 +38,7 @@ function Modal({closeModal, user, modals, newGame}) {
                 </div>
             )
         }
-    }
+    };
 
     return (
         <div className="modalOverlay">

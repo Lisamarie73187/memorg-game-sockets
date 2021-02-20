@@ -12,20 +12,20 @@ const screenStrings = {
 };
 
 
-// const socket = io.connect(`http://localhost:${PORT}` , {
-//     withCredentials: true,
-//     extraHeaders: {
-//         "my-custom-header": "abcd"
-//     }
-// });
+const socket = io.connect(`http://localhost:5000` , {
+    withCredentials: true,
+    extraHeaders: {
+        "my-custom-header": "abcd"
+    }
+});
 
-const socket = io.connect();
+// const socket = io.connect();
 
 
 function App() {
     const [userList, setUserList] = useState([]);
     const [screen, setScreen] = useState(screenStrings.signIn);
-    const [userName, setUserName] = useState('')
+    const [userName, setUserName] = useState('');
 
     const options = 24;
 

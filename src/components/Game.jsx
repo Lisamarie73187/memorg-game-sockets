@@ -20,8 +20,8 @@ function Game({options, socket, userList, setScreen}) {
     },[userList]);
 
     const newGame = () => {
-        setScreen('signIn')
-        socket.emit('startNewGame')
+        setScreen('signIn');
+        socket.emit('startNewGame');
     };
 
     useEffect(() => {
@@ -44,7 +44,7 @@ function Game({options, socket, userList, setScreen}) {
 
     const checkIfTheresAMatch = () => {
         return game[flippedIndexes[0]].pictureId === game[flippedIndexes[1]].pictureId;
-    }
+    };
 
     const getNextPlayer = () => {
         let indexOfUser = indexes++;
@@ -52,7 +52,7 @@ function Game({options, socket, userList, setScreen}) {
             indexes = 0
         }
         socket.emit('nextPlayer', indexOfUser);
-    }
+    };
 
 
     useEffect(() => {
