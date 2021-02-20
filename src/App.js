@@ -12,9 +12,6 @@ const screenStrings = {
     game: 'game'
 };
 
-const PORT = process.env.PORT || 5000;
-console.log(PORT)
-
 
 // const socket = io.connect(`http://localhost:${PORT}` , {
 //     withCredentials: true,
@@ -31,7 +28,7 @@ function App() {
     const [screen, setScreen] = useState(screenStrings.signIn);
     const [userName, setUserName] = useState('')
 
-    const options = 4;
+    const options = 24;
 
     useEffect(() => {
         socket.on('users', (connectedUsers) => {
