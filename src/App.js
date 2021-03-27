@@ -12,14 +12,14 @@ const screenStrings = {
 };
 
 
-const socket = io.connect(`http://localhost:5000` , {
-    withCredentials: true,
-    extraHeaders: {
-        "my-custom-header": "abcd"
-    }
-});
+// const socket = io.connect(`http://localhost:5000` , {
+//     withCredentials: true,
+//     extraHeaders: {
+//         "my-custom-header": "abcd"
+//     }
+// });
 
-// const socket = io.connect();
+const socket = io.connect();
 
 
 function App() {

@@ -4,6 +4,7 @@ import { useSpring, animated as a } from 'react-spring'
 
 function Card({id, picture, game, user, flippedCount, setFlippedCount, flippedIndexes, setFlippedIndexes, socket}) {
     const [flipped, setFlippedCard] = useState(false);
+    const [disableCard, setDisableCard] = useState(false)
     const {transform, opacity} = useSpring({
         opacity: flipped ? 1 : 0,
         transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
@@ -12,15 +13,20 @@ function Card({id, picture, game, user, flippedCount, setFlippedCount, flippedIn
 
     useEffect(() => {
         if (flippedIndexes[2] === true && flippedIndexes.indexOf(id) > -1) {
+            setDisableCard(true)
             setTimeout(() => {
                 setFlippedCard(state => !state);
                 setFlippedCount(flippedCount + 1);
                 setFlippedIndexes([])
+                setDisableCard(false)
+
             }, 3000)
         } else if (flippedIndexes[2] === false && id === 0) {
             setTimeout(() => {
                 setFlippedCount(flippedCount + 1);
                 setFlippedIndexes([])
+                setDisableCard(false)
+
             }, 3000)
         }
     }, [flippedIndexes]);
@@ -55,8 +61,9 @@ function Card({id, picture, game, user, flippedCount, setFlippedCount, flippedIn
     }, []);
 
     const onCardClick = () => {
-        socket.emit('cardFlipped', {id, flippedIndexes});
+            socket.emit('cardFlipped', {id, flippedIndexes});
     };
+
 
 
     return (

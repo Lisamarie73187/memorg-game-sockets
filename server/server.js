@@ -5,20 +5,20 @@ const path = require('path');
 
 const PORT = process.env.PORT|| 5000;
 
-// const buildPath = path.join(__dirname, '..', 'build');
-// app.use(express.static(buildPath));
+const buildPath = path.join(__dirname, '..', 'build');
+app.use(express.static(buildPath));
 
 
-const io = require('socket.io')(server, {
-    cors: {
-        origin: 'http://localhost:3000',
-        methods: ["GET", "POST"],
-        allowedHeaders: ["my-custom-header"],
-        credentials: true
-    }
-});
+// const io = require('socket.io')(server, {
+//     cors: {
+//         origin: 'http://localhost:3000',
+//         methods: ["GET", "POST"],
+//         allowedHeaders: ["my-custom-header"],
+//         credentials: true
+//     }
+// });
 
-// const io = require('socket.io')(server);
+const io = require('socket.io')(server);
 
 
 const randomHexColor = function(){
